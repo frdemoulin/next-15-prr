@@ -15,13 +15,16 @@ interface MoviesResponseProps {
 const Movies = async () => {
     headers();
 
+    // process.env["NODE_TLS_REJECT_UNAUTHORIZED"] = "0";
+
     let movies: Movie[] = await withDelay(
         fetch(
             // delay the response to simulate a slow data request that would benefit from streaming
             `https://api.themoviedb.org/3/movie/top_rated?api_key=${process.env.NEXT_PUBLIC_TMDB_API}&language=en-US&page=1`,
             {
                 // disable Next.js Cache to better demo streaming
-                cache: 'no-store',
+                cache: 'no-store'
+                // agent: httpsAgent,
             }
         )
         .then((res) => res.json())
