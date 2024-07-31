@@ -1,65 +1,14 @@
-import { Suspense } from "react";
-
-import { SkeletonCard } from "@/components/skeleton-card";
-import UserCard from "@/components/user-card";
-
-interface dataProps {
-  id: number;
-  cast: Array<actorProps>;
-}
-
-interface actorProps {
-  "adult": boolean;
-  "gender": number;
-  "id": number;
-  "known_for_department": string;
-  "name": string;
-  "original_name": string;
-  "popularity": number;
-  "profile_path": string;
-  "cast_id": number;
-  "character": string;
-  "credit_id": string;
-  "order": number;
-}
-
-const getActors: Array<actorProps> = async () => {
-  try {
-    const response = await fetch(`https://api.themoviedb.org/3/movie/299054/credits?api_key=${process.env.NEXT_PUBLIC_TMDB_API}`);
-    if (!response.ok) {
-      throw new Error('Failed to fetch data');
-    }
-
-    const data: dataProps = await response.json();
-
-    console.log(data);
-  } catch (error) {
-    console.error('error: ', error);
-  }
-};
+import Link from "next/link";
 
 export default async function Home() {
-  const actors: Array<actorProps> = await getActors();
-
   return (
     <div className="font-sans grid grid-rows-[20px_1fr_20px] p-8 pb-20 gap-4">
       <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <h1 className="text-3xl font-bold text-blue-500">Expendables 4</h1>
-        <h2 className="text-2xl font-bold">Liste des acteurs</h2>
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          {actors && actors.map((actor): actorProps => {
-            return (
-              // <Suspense
-              //   fallback={<SkeletonCard />}
-              //   key={actor.id}>
-              <UserCard
-                key={actor.id}
-                original_name={actor.original_name}
-              />
-              // </Suspense>
-            );
-          })}
-        </div>
+        <h1 className="text-3xl font-bold text-blue-500">Next.js 15 rendering experimentation</h1>
+        <ul className="space-y-2">
+          <li><Link href="/movies" className="hover:underline">Movies list (with PPR)</Link></li>
+          <li><Link href="/about" className="hover:underline">About (with SSR)</Link></li>
+        </ul>
       </main>
     </div>
   );

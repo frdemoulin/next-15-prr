@@ -13,10 +13,10 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: {
-    template: "%s | bugbook",
-    default: "bugbook",
+    template: "%s | Next.js 15 rendering",
+    default: "Next.js 15 rendering",
   },
-  description: "The social media app for powernerds",
+  description: "Experimenting Next.js 15 renderings",
 };
 
 export default function RootLayout({
@@ -26,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+      <body className={`${geistSans.variable} ${geistMono.variable} p-4 m-4`}>
         {children}
       </body>
     </html>
