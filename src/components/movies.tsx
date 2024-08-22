@@ -28,7 +28,7 @@ const Movies = async () => {
             }
         )
         .then((res) => res.json())
-        .then((data: MoviesResponseProps) => data.results),
+        .then((data: MoviesResponseProps) => data.results.slice(0, 4)),
         delayMovies
     );
 

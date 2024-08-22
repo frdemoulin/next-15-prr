@@ -1,6 +1,6 @@
 import { SkeletonCard } from "./skeleton-card";
 
-const MoviesSkeleton = () => {
+const Skeleton = () => {
     return (
         <div className="grid grid-cols-4 gap-6">
             <SkeletonCard />
@@ -11,4 +11,4 @@ const MoviesSkeleton = () => {
     )
 }
 
-export default MoviesSkeleton;
+export default Skeleton;

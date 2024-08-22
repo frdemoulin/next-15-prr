@@ -1,6 +1,6 @@
 // Times are in milliseconds
-export const delayActors = 2000;
-export const delayMovies = 2000;
+export const delayTvShows = 2000;
+export const delayMovies = 5000;
 
 export async function withDelay<T>(
   promise: Promise<T>,
